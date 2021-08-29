@@ -2,13 +2,12 @@
 - name: Playbook to deploy game of life project on tomcat server
   hosts: tomcat
   tasks:
+  - name: Deleted existing files
+    shell: rm -rf /opt/tomcat/webapps/gameoflife /opt/tomcat/webapps/gameoflife.war
+    become: yes
   - name: Download GOL war file onto tomcat directory
     shell: curl -o /opt/tomcat/webapps/gameoflife.war http://35.224.65.21:8081/artifactory/gameoflife/gameoflife.war -u "admin:Maxima100%"
     become: yes
-  - name: Shutdown tomcat server
-    shell: /opt/tomcat/bin/shutdown.sh run /opt/tomcat/webapps/gameoflife.war
-    become: yes
-    become_user: root
   - name: extract war file to deploy GOL application
     shell: /opt/tomcat/bin/startup.sh run /opt/tomcat/webapps/gameoflife.war
     become: yes

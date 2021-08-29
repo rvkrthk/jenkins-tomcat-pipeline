@@ -3,9 +3,10 @@
   hosts: tomcat
   tasks:
   - name: Download GOL war file onto tomcat directory
-    shell:
-      cmd: "curl -o /opt/tomcat/webapps/gameoflife.war http://35.224.65.21:8081/artifactory/gameoflife/gameoflife.war"
+    get_url: 
+      url: http://35.224.65.21:8081/artifactory/gameoflife/gameoflife.war
+      dest: /opt/tomcat/gameoflife.war
     become: yes
   - name: extract war file to deploy GOL application
-    shell:
-      cmd: "sudo /opt/tomcat/bin/catalina.sh run /opt/tomcat/webapps/gameoflife.war"
+    shell: sudo /opt/tomcat/bin/catalina.sh run /opt/tomcat/webapps/gameoflife.war
+    become: yes

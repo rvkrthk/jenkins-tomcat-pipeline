@@ -1,6 +1,7 @@
 ---
 - name: Playbook to deploy game of life project on tomcat server
   hosts: tomcat
+  become_user: root
   tasks:
   - name: Deleted existing files
     shell: rm -rf /opt/tomcat/webapps/gameoflife /opt/tomcat/webapps/gameoflife.war
@@ -11,4 +12,3 @@
   - name: extract war file to deploy GOL application
     shell: /opt/tomcat/bin/startup.sh run /opt/tomcat/webapps/gameoflife.war
     become: yes
-    become_user: root

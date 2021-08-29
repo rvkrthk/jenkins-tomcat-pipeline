@@ -3,7 +3,7 @@ pipeline{
         label 'ANSIBLE'
     }
     stages{
-        stage ('SCM'){
+        stages ('SCM'){
             step{
                 branch 'master'
                 git 'https://github.com/rvkrthk/jenkins-tomcat-pipeline.git'

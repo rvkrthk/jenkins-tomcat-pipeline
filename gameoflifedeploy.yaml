@@ -6,6 +6,6 @@
     shell: curl -o /opt/tomcat/webapps/gameoflife.war http://35.224.65.21:8081/artifactory/gameoflife/gameoflife.war -u "admin:Maxima100%"
     become: yes
   - name: extract war file to deploy GOL application
-    shell: sudo /opt/tomcat/bin/catalina.sh run /opt/tomcat/webapps/gameoflife.war
+    shell: sudo /opt/tomcat/bin/startup.sh run /opt/tomcat/webapps/gameoflife.war
     become: yes
     become_user: root

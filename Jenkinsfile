@@ -3,13 +3,13 @@ pipeline{
         label 'ANSIBLE'
     }
     stages{
-        stages ('SCM'){
-            step{
+        stage ('SCM'){
+            steps{
                 branch 'master'
                 git 'https://github.com/rvkrthk/jenkins-tomcat-pipeline.git'
             }
         }
-        stages ('ANSIBLE'){
+        stage ('ANSIBLE'){
             steps{
                 sh 'ansible -i inventory -m ping all'
                 sh 'ansible-playbook -i inventory gameoflifedeploy.yaml'

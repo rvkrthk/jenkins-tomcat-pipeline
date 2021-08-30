@@ -3,8 +3,7 @@ pipeline{
         label 'ANSIBLE'
     }
     triggers{
-        upstream(upstreamProjects: 'GOL-Practice-Pipeline' )
-        threshold: hudson.model.Result.SUCCESS
+        upstream(upstreamProjects: 'GOL-Practice-Pipeline',threshold: hudson.model.Result.SUCCESS)
     }
     stages{
         stage ('SCM'){
